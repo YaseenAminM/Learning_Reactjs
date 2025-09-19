@@ -142,3 +142,70 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+
+// ************** 001 Section Overview **************
+
+// ************** 002 Destructuring Objects and Arrays **************
+
+const book = getBook(2);
+// book;
+
+// const title = book.title;
+// const author = book;
+
+// title;
+// author;
+
+// console.log(title, author);
+
+// Object Destructuring
+const { title, author, publicationDate, genres, hasMovieAdaptation } = book;
+
+// title;
+// author;
+// genres;
+
+// const primaryGenre = genres[0];
+// const secondaryGenr = genres[1];
+
+// Array Destructuring
+// const [primaryGenre, secondaryGenr] = genres;
+
+// primaryGenre;
+// secondaryGenr;
+
+// ************** 003 RestSpread Operator **************
+
+//  Rest Operator
+const [primaryGenre, secondaryGenr, ...otherGenres] = genres;
+
+// primaryGenre;
+// secondaryGenr;
+// otherGenres;
+
+// Spread Operator
+
+const newGenres = [...genres, "epic fantasy"];
+
+newGenres;
+
+// Spread Operator in Objects
+const updatedBook = {
+  ...book,
+  moviePublicationDate: "2001-12-19",
+  pages: 1210,
+};
+updatedBook;
+
+// ************** 004 Template Literals **************
+// ************** 005 Ternaries Instead of ifelse Statements **************
+// ************** 006 Arrow Functions **************
+// ************** 007 Short-Circuiting And Logical Operators &&, , **************
+// ************** 008 Optional Chaining **************
+// ************** 009 The Array map Method **************
+// ************** 010 The Array filter Method **************
+// ************** 011 The Array reduce Method **************
+// ************** 012 The Array sort Method **************
+// ************** 013 Working With Immutable Arrays **************
+// ************** 014 Asynchronous JavaScript Promises **************
+// ************** 015 Asynchronous JavaScript AsyncAwait **************
