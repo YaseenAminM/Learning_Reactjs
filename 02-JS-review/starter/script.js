@@ -147,7 +147,7 @@ function getBook(id) {
 
 // ************** 002 Destructuring Objects and Arrays **************
 
-const book = getBook(2);
+const book = getBook(1);
 // book;
 
 // const title = book.title;
@@ -159,7 +159,8 @@ const book = getBook(2);
 // console.log(title, author);
 
 // Object Destructuring
-const { title, author, publicationDate, genres, hasMovieAdaptation } = book;
+const { title, author, publicationDate, genres, hasMovieAdaptation, pages } =
+  book;
 
 // title;
 // author;
@@ -177,7 +178,7 @@ const { title, author, publicationDate, genres, hasMovieAdaptation } = book;
 // ************** 003 RestSpread Operator **************
 
 //  Rest Operator
-const [primaryGenre, secondaryGenr, ...otherGenres] = genres;
+// const [primaryGenre, secondaryGenr, ...otherGenres] = genres;
 
 // primaryGenre;
 // secondaryGenr;
@@ -185,21 +186,55 @@ const [primaryGenre, secondaryGenr, ...otherGenres] = genres;
 
 // Spread Operator
 
-const newGenres = [...genres, "epic fantasy"];
+// const newGenres = [...genres, "epic fantasy"];
 
-newGenres;
+// newGenres;
 
 // Spread Operator in Objects
-const updatedBook = {
-  ...book,
-  moviePublicationDate: "2001-12-19",
-  pages: 1210,
-};
-updatedBook;
+// const updatedBook = {
+//   ...book,
+//   moviePublicationDate: "2001-12-19",
+//   pages: 1210,
+// };
+// updatedBook;
 
 // ************** 004 Template Literals **************
+
+// const summary = `${title}, a ${pages}-pages long book, was book written by ${author} and published ${get}. The book has ${
+//   hasMovieAdaptation ? "" : "not"
+// } been adapted as a movie`;
+
+// summary;
+
 // ************** 005 Ternaries Instead of ifelse Statements **************
+
+const pagesRange = pages > 100 ? "over a thousand" : "less than 1000";
+
+console.log(`The book has ${pagesRange} pages`);
+
+// const summary = `${title}, a ${pages}-pages long book, was book written by ${author} and published ${
+//   publicationDate.split("-")[0]
+// }. The book has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie`;
+
+// summary;
+
 // ************** 006 Arrow Functions **************
+
+// Function Decleration
+// function getYear(str) {
+//   return str.split("-")[0];
+// }
+
+// Arrow Function
+const getYear = (str) => str.split("-")[0];
+console.log(getYear(publicationDate));
+
+const summary = `${title}, a ${pages}-pages long book, was book written by ${author} and published ${getYear(
+  publicationDate
+)}. The book has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie`;
+
+summary;
+
 // ************** 007 Short-Circuiting And Logical Operators &&, , **************
 // ************** 008 Optional Chaining **************
 // ************** 009 The Array map Method **************
