@@ -350,12 +350,37 @@ const arr = [3, 7, 1, 9, 6];
 // slice before sort to prevent mutation in the original arr
 const sorted = arr.slice().sort((a, b) => b - a);
 
-arr;
-sorted;
+// arr;
+// sorted;
 
 const sortedByPages = books.slice().sort((a, b) => a.pages - b.pages);
-sortedByPages;
+// sortedByPages;
 
 // ************** 013 Working With Immutable Arrays **************
+
+// 1) Add book object to array
+const newBook = {
+  id: 6,
+  title: "Harry Potter and the chamber of the secrets",
+  author: "J. K Rowling",
+};
+
+const booksAfterAdding = [...books, newBook];
+// booksAfterAdding;
+
+// 2)  Delete book object from array
+const booksAfterDelete = booksAfterAdding
+  .slice()
+  .filter((book) => book.id !== 3);
+
+// booksAfterDelete;
+
+// 3) update book object in the array
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+  book.id === 1 ? { ...book, page: 5000 } : book
+);
+
+// booksAfterUpdate;
+
 // ************** 014 Asynchronous JavaScript Promises **************
 // ************** 015 Asynchronous JavaScript AsyncAwait **************
