@@ -305,6 +305,22 @@ function getTotalReviewCount(book) {
 
 const books = getBooks();
 
+const x = [1, 2, 3, 4, 5].map((el) => el * 2);
+x;
+
+const titles = books.map((book) => book.title);
+// titles;
+
+const essentialData = books.map((book) => {
+  return {
+    title: book.title,
+    author: book.author,
+    reviewsCount: getTotalReviewCount(book),
+  };
+});
+
+essentialData;
+
 // ************** 010 The Array filter Method **************
 // ************** 011 The Array reduce Method **************
 // ************** 012 The Array sort Method **************
