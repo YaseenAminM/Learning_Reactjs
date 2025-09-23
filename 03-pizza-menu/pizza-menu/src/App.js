@@ -1,8 +1,7 @@
-import logo from "./logo.svg";
-import "./App.css";
-
-function App() {
-  return <h1>Hello React</h1>;
+export default function App() {
+  return (
+    <div>
+      <h1>Yaseen Amin</h1>
+    </div>
+  );
 }
-
-export default App;
