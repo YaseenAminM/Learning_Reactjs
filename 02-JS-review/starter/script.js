@@ -210,7 +210,7 @@ const { title, author, publicationDate, genres, hasMovieAdaptation, pages } =
 
 const pagesRange = pages > 100 ? "over a thousand" : "less than 1000";
 
-console.log(`The book has ${pagesRange} pages`);
+// console.log(`The book has ${pagesRange} pages`);
 
 // const summary = `${title}, a ${pages}-pages long book, was book written by ${author} and published ${
 //   publicationDate.split("-")[0]
@@ -227,7 +227,7 @@ console.log(`The book has ${pagesRange} pages`);
 
 // Arrow Function
 const getYear = (str) => str.split("-")[0];
-console.log(getYear(publicationDate));
+// console.log(getYear(publicationDate));
 
 const summary = `${title}, a ${pages}-pages long book, was book written by ${author} and published ${getYear(
   publicationDate
@@ -306,7 +306,7 @@ function getTotalReviewCount(book) {
 const books = getBooks();
 
 const x = [1, 2, 3, 4, 5].map((el) => el * 2);
-x;
+// x;
 
 const titles = books.map((book) => book.title);
 // titles;
@@ -319,9 +319,20 @@ const essentialData = books.map((book) => {
   };
 });
 
-essentialData;
+// essentialData;
 
 // ************** 010 The Array filter Method **************
+
+const longBooks = books
+  .filter((book) => book.pages > 500)
+  .filter((book) => book.hasMovieAdaptation);
+// longBooks;
+
+const adventureBooks = books
+  .filter((book) => book.genres.includes("adventure"))
+  .map((book) => book.title);
+// adventureBooks;
+
 // ************** 011 The Array reduce Method **************
 // ************** 012 The Array sort Method **************
 // ************** 013 Working With Immutable Arrays **************
