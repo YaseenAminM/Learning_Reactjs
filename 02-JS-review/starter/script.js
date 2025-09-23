@@ -147,7 +147,7 @@ function getBook(id) {
 
 // ************** 002 Destructuring Objects and Arrays **************
 
-const book = getBook(1);
+const book = getBook(3);
 // book;
 
 // const title = book.title;
@@ -233,11 +233,78 @@ const summary = `${title}, a ${pages}-pages long book, was book written by ${aut
   publicationDate
 )}. The book has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie`;
 
-summary;
+// summary;
 
 // ************** 007 Short-Circuiting And Logical Operators &&, , **************
+
+// console.log(true && "Some string");
+// console.log(false && "Some string");
+// console.log(hasMovieAdaptation && "This book has a movie");
+
+/*
+==========================
+  Falsy Values in JS
+==========================
+- false
+- 0
+- -0
+- 0n        (BigInt zero)
+- ""        (empty string)
+- null
+- undefined
+- NaN
+
+*/
+
+/*
+
+==========================
+  Truthy Values in JS
+==========================
+Basically everything else, including:
+- true
+- "0"        (string with zero)
+- "false"    (string with text "false")
+- " "        (non-empty string, even spaces)
+- []         (empty array)
+- {}         (empty object)
+- function(){} (any function)
+- new Date()
+- Infinity and -Infinity
+- All non-zero numbers (positive & negative)
+*/
+
+// console.log("Yaseen" && "Some string");
+// console.log(0 && "Sme string");
+
+// console.log(true || "Some string");
+// console.log(false || "Some string");
+
+// console.log(book.translations.spanish);
+
+// const spanishTranslation = book.translations.spanish || "NOT TRANSLATED";
+// spanishTranslation;
+
+// console.log(book.reviews.librarything.reviewsCount);
+
+// NULLISH COALESCING OPERATOR (??)
+// const countWrong = book.reviews.librarything.reviewsCount ?? "no data";
+// countWrong;
+
 // ************** 008 Optional Chaining **************
+
+function getTotalReviewCount(book) {
+  const goodRead = book?.reviews?.goodreads?.reviewsCount ?? 0;
+  const libraryThing = book?.reviews?.librarything?.reviewsCount ?? 0;
+  return goodRead + libraryThing;
+}
+
+// console.log(getTotalReviewCount(book));
+
 // ************** 009 The Array map Method **************
+
+const books = getBooks();
+
 // ************** 010 The Array filter Method **************
 // ************** 011 The Array reduce Method **************
 // ************** 012 The Array sort Method **************
