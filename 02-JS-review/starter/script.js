@@ -383,4 +383,9 @@ const booksAfterUpdate = booksAfterDelete.map((book) =>
 // booksAfterUpdate;
 
 // ************** 014 Asynchronous JavaScript Promises **************
+
+fetch("https://jsonplaceholder.typicode.com/todos")
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+
 // ************** 015 Asynchronous JavaScript AsyncAwait **************
