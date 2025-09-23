@@ -69,14 +69,21 @@ function Menu() {
   );
 }
 function Footer() {
+  const hour = new Date().getHours();
+  const OpenHour = 8;
+  const closeHour = 24;
+  const isOpen = hour >= OpenHour && hour <= closeHour;
+
+  if (isOpen) {
+    alert("We're currently open");
+  } else {
+    alert("Sorry we're closed");
+  }
+
   return (
     <footer>{new Date().toLocaleTimeString()} We're currently open!</footer>
   );
 }
-
-const Test = () => {
-  return <div></div>;
-};
 
 function Pizza() {
   return (
