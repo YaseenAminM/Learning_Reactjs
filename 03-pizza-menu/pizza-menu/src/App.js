@@ -1,3 +1,5 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
 const pizzaData = [
   {
     name: "Focaccia",
@@ -46,13 +48,35 @@ const pizzaData = [
 export default function App() {
   return (
     <div>
-      <h1>Hello React!!!!</h1>
+      <Header />
+      <Menu />
+      <Footer />
+    </div>
+  );
+}
+
+function Header() {
+  return <h1>Fast React Pizza Co.</h1>;
+}
+function Menu() {
+  return (
+    <div>
+      <h2>Our menu</h2>
       <Pizza />
       <Pizza />
       <Pizza />
     </div>
   );
 }
+function Footer() {
+  return (
+    <footer>{new Date().toLocaleTimeString()} We're currently open!</footer>
+  );
+}
+
+const Test = () => {
+  return <div></div>;
+};
 
 function Pizza() {
   return (
