@@ -305,7 +305,7 @@ function getTotalReviewCount(book) {
 
 const books = getBooks();
 
-const x = [1, 2, 3, 4, 5].map((el) => el * 2);
+// const x = [1, 2, 3, 4, 5].map((el) => el * 2);
 // x;
 
 const titles = books.map((book) => book.title);
@@ -334,7 +334,28 @@ const adventureBooks = books
 // adventureBooks;
 
 // ************** 011 The Array reduce Method **************
+
+const pagesAllBooks = books.reduce((sum = 0, book) => {
+  return sum + book.pages;
+}, 0);
+
+// pagesAllBooks;
+
 // ************** 012 The Array sort Method **************
+
+const arr = [3, 7, 1, 9, 6];
+
+// const sorted = arr.sort((a, b) => a - b);
+
+// slice before sort to prevent mutation in the original arr
+const sorted = arr.slice().sort((a, b) => b - a);
+
+arr;
+sorted;
+
+const sortedByPages = books.slice().sort((a, b) => a.pages - b.pages);
+sortedByPages;
+
 // ************** 013 Working With Immutable Arrays **************
 // ************** 014 Asynchronous JavaScript Promises **************
 // ************** 015 Asynchronous JavaScript AsyncAwait **************
