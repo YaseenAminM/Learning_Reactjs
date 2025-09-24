@@ -1,5 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
 const pizzaData = [
   {
     name: "Focaccia",
@@ -69,14 +67,19 @@ function Header() {
   );
 }
 function Menu() {
+  const pizzas = [];
+  // const pizzas = pizzaData;
+  const numPizzas = pizzas.length;
   return (
     <main className="menu">
       <h2>Our menu</h2>
-      <ul className="pizzas">
-        {pizzaData.map((pizza) => {
-          return <Pizza pizzaObj={pizza} key={pizza.ingredients} />;
-        })}
-      </ul>
+      {numPizzas > 0 && (
+        <ul className="pizzas">
+          {pizzas.map((pizza) => {
+            return <Pizza pizzaObj={pizza} key={pizza.ingredients} />;
+          })}
+        </ul>
+      )}
     </main>
   );
 }
@@ -98,7 +101,7 @@ function Footer() {
   const hour = new Date().getHours();
   const OpenHour = 8;
   const closeHour = 24;
-  // const isOpen = hour >= OpenHour && hour <= closeHour;
+  const isOpen = hour >= OpenHour && hour <= closeHour;
 
   // if (isOpen) {
   //   alert("We're currently open");
@@ -108,7 +111,15 @@ function Footer() {
 
   return (
     <footer className="footer">
-      {new Date().toLocaleTimeString()} We're currently open!
+      {isOpen && (
+        <div className="order">
+          <p>
+            We're currently open until {closeHour}:00 Come visit us or order
+            online.
+          </p>
+          <button className="btn">Order</button>
+        </div>
+      )}
     </footer>
   );
 }
