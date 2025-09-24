@@ -1,3 +1,5 @@
+import React from "react";
+
 const pizzaData = [
   {
     name: "Focaccia",
@@ -73,12 +75,19 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our menu</h2>
+
       {numPizzas ? (
-        <ul className="pizzas">
-          {pizzas.map((pizza) => {
-            return <Pizza pizzaObj={pizza} key={pizza.ingredients} />;
-          })}
-        </ul>
+        <React.Fragment>
+          <p>
+            Authentic Italian cuisine 6 creative dishes to choose from. All from
+            out stone oven, all organic all delicious
+          </p>
+          <ul className="pizzas">
+            {pizzas.map((pizza) => {
+              return <Pizza pizzaObj={pizza} key={pizza.ingredients} />;
+            })}
+          </ul>
+        </React.Fragment>
       ) : (
         <p>We're still working on our menu. Please come back later :)</p>
       )}
