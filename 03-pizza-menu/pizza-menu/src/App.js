@@ -98,14 +98,23 @@ function Menu() {
 function Pizza({ pizzaObj }) {
   // if (props.pizzaObj.soldOut) return;
   return (
-    <div className={`pizza ${pizzaObj.soldOut ? "sold-out" : null}`}>
+    <li className={`pizza ${pizzaObj.soldOut ? `sold-out` : null}`}>
       <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <div>
         <h3>{pizzaObj.name}</h3>
         <p>{pizzaObj.ingredients}</p>
+
+        {/* First Approch Text conditional  */}
+        {/* {pizzaObj.soldOut ? (
+          <span>SOLD OUT</span>
+        ) : (
+          <span>{pizzaObj.price}</span>
+        )} */}
+
+        {/* Second Approch Text conditional  */}
+        <span>{pizzaObj.soldOut ? "Sold out" : pizzaObj.price}</span>
       </div>
-      <span>{pizzaObj.price}</span>
-    </div>
+    </li>
   );
 }
 
