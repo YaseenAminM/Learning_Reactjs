@@ -7,11 +7,22 @@ const initialItems = [
 ];
 
 export default function App() {
+  // State
+  const [items, setItems] = useState([]);
+
+  function handleAdditems(item) {
+    setItems((items) => [...items, item]);
+  }
+
+  function handleDeleteItem(id) {
+    setItems((items) => items.filter((item) => item.id !== id));
+  }
+
   return (
     <div className="app">
       <Logo />
-      <Form />
-      <PackingList />
+      <Form onAdditems={handleAdditems} />
+      <PackingList items={items} onDeleteItems={handleDeleteItem} />
       <Status />
     </div>
   );
@@ -20,11 +31,12 @@ export default function App() {
 function Logo() {
   return <h1>🏝️ Far Away 🧳</h1>;
 }
-function Form() {
+function Form({ onAdditems }) {
   // State
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
 
+  // Handler Function
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -37,7 +49,7 @@ function Form() {
       id: Date.now() + Math.random(),
     };
 
-    console.log(newItem);
+    onAdditems(newItem);
     handleResetForm();
   }
 
@@ -73,19 +85,21 @@ function Form() {
     </form>
   );
 }
-function PackingList() {
+function PackingList({ items, onDeleteItems }) {
   return (
     <div className="list">
       <ul>
-        {initialItems.map((item) => {
-          return <Item key={Math.random() + item.id} item={item} />;
+        {items.map((item) => {
+          return (
+            <Item onDeleteItems={onDeleteItems} key={item.id} item={item} />
+          );
         })}
       </ul>
     </div>
   );
 }
 
-function Item({ item }) {
+function Item({ item, onDeleteItems }) {
   return (
     <li>
       <span
@@ -99,7 +113,13 @@ function Item({ item }) {
       >
         {item.quantity} {item.description}
       </span>
-      <span>❌</span>
+      <button
+        onClick={() => {
+          onDeleteItems(item.id);
+        }}
+      >
+        ❌
+      </button>
     </li>
   );
 }
