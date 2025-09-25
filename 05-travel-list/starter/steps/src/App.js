@@ -8,7 +8,10 @@ const messages = [
 
 export default function App() {
   // State
-  let [step, setStep] = useState(1);
+  const [step, setStep] = useState(1);
+  const [test, setTest] = useState({
+    name: "Yaseen",
+  });
 
   // Handler Function
   function handlePrevious() {
@@ -22,6 +25,14 @@ export default function App() {
     if (step < 3) {
       setStep((step) => step + 1);
     }
+
+    // BAD PRACTICE
+    // test.name = "Ali";
+
+    // GOOD PRACTICE
+    setTest({
+      name: "Ali",
+    });
   }
 
   return (
@@ -32,7 +43,10 @@ export default function App() {
         <div className={`${step >= 3 ? "active" : null}`}>3</div>
       </div>
 
-      <p className="message">Step {messages[step - 1]}</p>
+      <p className="message">
+        Step {messages[step - 1]}
+        {test.name}
+      </p>
 
       <div className="buttons">
         <button
