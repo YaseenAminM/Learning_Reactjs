@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const initialItems = [
   { id: 1, description: "Passports", quantity: 2, packed: false },
@@ -21,14 +21,38 @@ function Logo() {
   return <h1>🏝️ Far Away 🧳</h1>;
 }
 function Form() {
+  // State
+  const [description, setDescription] = useState("");
+  const [quantity, setQuantity] = useState(1);
+
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(e.target[1].value);
+
+    if (!description) return;
+
+    const newItem = {
+      description,
+      quantity,
+      package: false,
+      id: Date.now() + Math.random(),
+    };
+
+    console.log(newItem);
+    handleResetForm();
   }
+
+  function handleResetForm() {
+    setQuantity(1);
+    setDescription("");
+  }
+
   return (
     <form className="add-form" onSubmit={handleSubmit}>
       <h3>What do you need for your 😍 trip?</h3>
-      <select>
+      <select
+        value={quantity}
+        onChange={(e) => setQuantity(Number(e.target.value))}
+      >
         {Array.from({ length: 20 }, (_, i) => i + 1).map((option) => {
           return (
             <option value={option} key={option + Math.random()}>
@@ -38,7 +62,12 @@ function Form() {
         })}
       </select>
 
-      <input type="text" placeholder="Item..." />
+      <input
+        type="text"
+        placeholder="Item..."
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
 
       <button>Add</button>
     </form>
