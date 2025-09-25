@@ -4,7 +4,17 @@ const messages = [
   "Invest your new income 🤑",
 ];
 export default function App() {
+  // Variable
   const step = 1;
+
+  // Handler Function
+  function handlePrevious() {
+    alert("Previous");
+  }
+  function handleNext() {
+    alert("Previous");
+  }
+
   return (
     <div className="steps">
       <div className="numbers">
@@ -21,6 +31,8 @@ export default function App() {
             color: "#fff",
             backgroundColor: "#7950f2",
           }}
+          // Mouse Click Event
+          onClick={handlePrevious}
         >
           Previous
         </button>
