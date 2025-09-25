@@ -27,7 +27,7 @@ function PackingList() {
 function Status() {
   return (
     <footer className="stats">
-      <em>You have X itemson your list, and you already packed X (X%)</em>
+      <em>You have X itemson your list, and you already packed X (X%%)</em>
     </footer>
   );
 }
