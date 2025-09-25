@@ -13,15 +13,17 @@ export default function App() {
 
   // Handler Function
   function handlePrevious() {
-    // Updating the State
     if (step > 1) {
       setStep((step) => step - 1);
     }
   }
   function handleNext() {
-    // Updating the State
     if (step < 3) {
+      // GOOD PRACTICE
       setStep((step) => step + 1);
+
+      // BAD PRACTICE
+      // setStep(step + 1);
     }
   }
 
