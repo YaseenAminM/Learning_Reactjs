@@ -8,12 +8,14 @@ const initialItems = [
 
 export default function App() {
   // State
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(initialItems);
 
+  // handler for adding items in the items state array
   function handleAdditems(item) {
     setItems((items) => [...items, item]);
   }
 
+  // handler to delete items from the items state array
   function handleDeleteItem(id) {
     setItems((items) => items.filter((item) => item.id !== id));
   }
