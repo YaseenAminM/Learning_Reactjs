@@ -9,7 +9,8 @@ const messages = [
 export default function App() {
   return (
     <div>
-      <Challenge />
+      <Steps />
+      <Steps />
     </div>
   );
 }
@@ -55,25 +56,18 @@ function Steps() {
           <p className="message">Step {messages[step - 1]}</p>
 
           <div className="buttons">
-            <button
-              style={{
-                color: "#fff",
-                backgroundColor: "#7950f2",
-              }}
-              // Mouse Click Event
+            <Button
               onClick={handlePrevious}
-            >
-              Previous
-            </button>
-            <button
-              style={{
-                color: "#fff",
-                backgroundColor: "#7950f2",
-              }}
+              textColor={"#fff"}
+              bgColor={"#7950f2"}
+              text={"Previous"}
+            />
+            <Button
               onClick={handleNext}
-            >
-              Next
-            </button>
+              textColor={"#fff"}
+              bgColor={"#7950f2"}
+              text={"Next"}
+            />
           </div>
         </div>
       )}
@@ -81,111 +75,16 @@ function Steps() {
   );
 }
 
-function Challenge() {
-  // State
-  const [steps, setSteps] = useState(1);
-  const [count, setCount] = useState(0);
-
-  let date = new Date("2027-06-21");
-  date.setDate(date.getDate() + count);
-
-  function handleStepsIncrement() {
-    setSteps((steps) => steps + 1);
-  }
-  function handleStepsDecrement() {
-    setSteps((steps) => steps - 1);
-  }
-
-  function handleCountIncrement() {
-    setCount((count) => count + steps);
-  }
-  function handleCountDecrement() {
-    setCount((count) => count - steps);
-  }
-
+function Button({ textColor, bgColor, onClick, text }) {
   return (
-    <div
-      className="challenge-container"
+    <button
       style={{
-        // backgroundColor: "red",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
+        color: textColor,
+        backgroundColor: bgColor,
       }}
+      onClick={onClick}
     >
-      <div
-        className="step-container"
-        style={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <button
-          style={{
-            height: "max-content",
-          }}
-          onClick={handleStepsDecrement}
-        >
-          -
-        </button>
-        <p
-          style={{
-            margin: "0",
-          }}
-        >
-          Step :{steps}
-        </p>
-        <button
-          style={{
-            height: "max-content",
-          }}
-          onClick={handleStepsIncrement}
-        >
-          +
-        </button>
-      </div>
-
-      <div
-        className="count-container"
-        style={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <button
-          style={{
-            height: "max-content",
-          }}
-          onClick={handleCountDecrement}
-        >
-          -
-        </button>
-        <p
-          style={{
-            margin: "0",
-          }}
-        >
-          Count : {count}
-        </p>
-        <button
-          style={{
-            height: "max-content",
-          }}
-          onClick={handleCountIncrement}
-        >
-          +
-        </button>
-      </div>
-
-      <p>
-        {count === 0
-          ? "Today "
-          : count > 1
-          ? `${count} days day from todays is `
-          : `${count} day from todays is `}
-        {date.toDateString()}
-      </p>
-    </div>
+      {text}
+    </button>
   );
 }
